@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gebeya-pink: #EB2D8F;
+  --color-gebeya-orange: #F57E2E;
+  --color-background-light: #F8F9FA;
+  --color-background-dark: #1F2937;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-glow-pink: glow-pink 2s ease-in-out infinite;
+  --animate-glow-orange: glow-orange 2s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+  @keyframes glow-pink {
+    0%, 100% { box-shadow: 0 0 5px #EB2D8F, 0 0 10px #EB2D8F; }
+    50% { box-shadow: 0 0 20px #EB2D8F, 0 0 30px #EB2D8F; }
+  }
+  @keyframes glow-orange {
+    0%, 100% { box-shadow: 0 0 5px #F57E2E, 0 0 10px #F57E2E; }
+    50% { box-shadow: 0 0 20px #F57E2E, 0 0 30px #F57E2E; }
+  }
+}
+
+:root {
+  --dala-pink: #EB2D8F;
+  --dala-orange: #F57E2E;
+  --background: #F8F9FA;
+  --foreground: #1F2937;
+  --card-bg: #FFFFFF;
+  --border: rgba(31, 41, 55, 0.1);
+}
+
+.dark {
+  --background: #1F2937;
+  --foreground: #F8F9FA;
+  --card-bg: #2D3748;
+  --border: rgba(248, 249, 250, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-500;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass-card {
+  @apply bg-[var(--card-bg)]/80 backdrop-blur-md border border-[var(--border)] shadow-xl transition-all duration-300;
+}
+
+.hover-glow-pink {
+  @apply transition-all duration-300;
+}
+.hover-glow-pink:hover {
+  box-shadow: 0 0 25px rgba(235, 45, 143, 0.4);
+  transform: translateY(-2px);
+}
+
+.hover-glow-orange {
+  @apply transition-all duration-300;
+}
+.hover-glow-orange:hover {
+  box-shadow: 0 0 25px rgba(245, 126, 46, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Scroll Fade-in utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ethiopian-pattern {
+  background-image: radial-gradient(var(--dala-pink) 0.5px, transparent 0.5px), radial-gradient(var(--dala-pink) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.05;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.phone-mockup {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+.card-slide-up {
+  @apply transform transition-all duration-500 ease-out;
+}
+
+.card-slide-up:hover {
+  @apply -translate-y-2;
+}
+
+button, a {
+  @apply active:scale-95 transition-transform;
+}
+
+::selection {
+  background-color: var(--dala-pink);
+  color: white;
+}
